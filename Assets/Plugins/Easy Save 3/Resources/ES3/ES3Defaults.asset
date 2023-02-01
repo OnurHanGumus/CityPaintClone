@@ -31,6 +31,8 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - PaintIn3D
+    - CW.Common
     - PPv2URPConverters
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
