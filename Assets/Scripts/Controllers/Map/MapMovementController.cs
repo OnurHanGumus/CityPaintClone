@@ -13,8 +13,8 @@ namespace Controllers
         #endregion
         #region Private Variables
         private Rigidbody _rig;
-        private PlayerManager _manager;
-        private PlayerData _data;
+        private TargetManager _manager;
+        private TargetData _data;
 
         private bool _isNotStarted = true;
 

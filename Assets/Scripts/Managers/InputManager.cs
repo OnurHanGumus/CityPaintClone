@@ -21,7 +21,7 @@ namespace Managers
 
         #region Serialized Variables
 
-        //[SerializeField] FloatingJoystick joystick; //SimpleJoystick paketi eklenmeli
+        [SerializeField] FloatingJoystick joystick; //SimpleJoystick paketi eklenmeli
 
 
         #endregion
@@ -89,12 +89,12 @@ namespace Managers
                 {
                     return;
                 }
-                //InputSignals.Instance.onInputDragged?.Invoke(new InputParams() //Joystick eklenince aç
-                //{
-                //    XValue = joystick.Horizontal,
-                //    ZValue = joystick.Vertical
-                //    //ClampValues = new Vector2(Data.ClampSides.x, Data.ClampSides.y)
-                //});
+                InputSignals.Instance.onInputDragged?.Invoke(new InputParams() //Joystick eklenince aç
+                {
+                    XValue = joystick.Horizontal,
+                    ZValue = joystick.Vertical
+                    //ClampValues = new Vector2(Data.ClampSides.x, Data.ClampSides.y)
+                });
             }
 
             if (Input.GetMouseButtonUp(0))
