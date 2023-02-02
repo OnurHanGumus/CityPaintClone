@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class GunMovementController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region Self Variables
 
-    // Update is called once per frame
-    void Update()
+    #region Public Variables
+
+    #endregion
+
+    #region Serialized Variables
+    [SerializeField] private Transform target;
+    #endregion
+
+    #region Private Variables
+
+    #endregion
+
+    #endregion
+
+    private void Update()
     {
-        
+        transform.LookAt(target);
     }
 }

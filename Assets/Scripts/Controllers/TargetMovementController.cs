@@ -49,8 +49,7 @@ namespace Controllers
             {
                 return;
             }
-            ClampControl();
-            //_rig.velocity = new Vector2(_lastInput.XValue, _lastInput.ZValue) * _data.Speed;
+            //ClampControl();
             _rig.velocity = transform.TransformDirection(new Vector3(_lastInput.XValue, _lastInput.ZValue, 0) * _data.Speed);
 
         }
