@@ -26,7 +26,7 @@ public class GunShootController : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(Shoot());
+
     }
     private IEnumerator Shoot()
     {
@@ -39,5 +39,16 @@ public class GunShootController : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+    }
+    public void OnPlay()
+    {
+        StartCoroutine(Shoot());
+
+    }
+    
+
+    public void OnRestartLevel()
+    {
+        StopAllCoroutines();
     }
 }
