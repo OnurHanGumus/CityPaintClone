@@ -207,7 +207,7 @@ MonoBehaviour:
     Texture: {fileID: 0}
     Kernel: 1
     Channels: {x: 1, y: 1, z: 1, w: 1}
-  texture: {fileID: 0}
+  texture: {fileID: 2800000, guid: 6bc059029e6d10d40b2eb46742d71653, type: 3}
   shape: {fileID: 0}
   shapeChannel: 3
   color: {r: 1, g: 0, b: 0, a: 1}
@@ -215,7 +215,7 @@ MonoBehaviour:
   angle: 0
   scale: {x: 1, y: 1, z: 1}
   radius: 1
-  hardness: 3
+  hardness: 100
   wrapping: 1
   normalFront: 1
   normalBack: 0
