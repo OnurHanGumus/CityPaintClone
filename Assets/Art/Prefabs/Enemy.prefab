@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 717442260641081965}
   - component: {fileID: 7104988370199057044}
+  - component: {fileID: 2041872721}
   - component: {fileID: 6010692819523160269}
   m_Layer: 0
   m_Name: Physics
@@ -110,6 +111,53 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2386001, y: 1.4865772, z: 1.0192068}
   m_Center: {x: -0, y: 0.61142236, z: -0.009603381}
+--- !u!114 &2041872721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568791397766748035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36498e7e45483f478ff74ab3f1cb21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  targetModel: {fileID: 0}
+  group:
+    index: 0
+  targetTexture: {fileID: 0}
+  blendMode:
+    Index: 0
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Texture: {fileID: 0}
+    Kernel: 1
+    Channels: {x: 1, y: 1, z: 1, w: 1}
+  texture: {fileID: 2800000, guid: 6bc059029e6d10d40b2eb46742d71653, type: 3}
+  shape: {fileID: 0}
+  shapeChannel: 3
+  color: {r: 0, g: 0.16470623, b: 1, a: 1}
+  opacity: 1
+  angle: 0
+  scale: {x: 1, y: 1, z: 1}
+  radius: 2
+  hardness: 3
+  wrapping: 1
+  normalFront: 1
+  normalBack: 0
+  normalFade: 0.01
+  tileTexture: {fileID: 0}
+  tileTransform: {fileID: 0}
+  tileOpacity: 1
+  tileTransition: 4
+  modifiers:
+    modifiers: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &6010692819523160269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ef67e49109821499dd198c15cd70c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  decal: {fileID: 2041872721}
+  manager: {fileID: 5298645009680727164}
 --- !u!1 &680236993526517794
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,8 +819,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3292715908246607918}
   - component: {fileID: 6211735914764205630}
+  - component: {fileID: 8887889887157118073}
   m_Layer: 0
-  m_Name: Character_32.001
+  m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -866,6 +917,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000029802322, y: 0.07987931, z: 0.0026132017}
     m_Extent: {x: 0.6084096, y: 0.7404094, z: 0.18670212}
   m_DirtyAABB: 0
+--- !u!114 &8887889887157118073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777947079223750108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623ad5d86b5e37b4485dd5fd606267ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7921213554809529650
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +941,7 @@ GameObject:
   - component: {fileID: 7396631800159551383}
   - component: {fileID: 7396631800159551381}
   - component: {fileID: 7396631800159551382}
+  - component: {fileID: 5298645009680727164}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -952,6 +1016,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.31600407, y: 0.16633558, z: 0.19018593}
   m_Center: {x: 0, y: -0.04615283, z: 0}
+--- !u!114 &5298645009680727164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921213554809529650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b155ed0a93106cc4692670777b8947b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshController: {fileID: 8887889887157118073}
 --- !u!1 &7938056752842376809
 GameObject:
   m_ObjectHideFlags: 0
