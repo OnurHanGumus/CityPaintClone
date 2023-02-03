@@ -16,6 +16,13 @@ public class BulletPhysicsController : MonoBehaviour
     #region Private Variables
     #endregion
     #endregion
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            transform.gameObject.SetActive(false);
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Ground"))

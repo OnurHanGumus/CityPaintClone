@@ -21,7 +21,7 @@ public class EnemyMovementController : MonoBehaviour
     #endregion
 
     #endregion
-    private void Start()
+    public void OnEnable()
     {
         ChangeRoute();
     }
@@ -29,7 +29,7 @@ public class EnemyMovementController : MonoBehaviour
     {
         _moveTween.Kill();
         //_moveTween = transform.DOMove(transform.position + (direction * 10), 1f).SetSpeedBased();
-        _moveTween = transform.DOPath(new Vector3[] { transform.position + (direction * 10)}, 1f).SetSpeedBased().SetLookAt(0.05f).SetEase(Ease.Linear);
+        _moveTween = transform.DOPath(new Vector3[] { transform.position + (direction * 100)}, 1f).SetSpeedBased().SetLookAt(0.05f).SetEase(Ease.Linear);
 
     }
     public void ChangeRoute()
