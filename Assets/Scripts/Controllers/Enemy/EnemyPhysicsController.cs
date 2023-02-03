@@ -26,6 +26,13 @@ public class EnemyPhysicsController : MonoBehaviour
             transform.parent.gameObject.SetActive(false);
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            manager.OutOfMap();
+        }
+    }
 
     private void DrawRay()
     {

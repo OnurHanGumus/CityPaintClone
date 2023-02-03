@@ -24,6 +24,7 @@ namespace Managers
 
         #region Private Variables
         //private TargetData _data;
+        private EnemyMovementController _movementController;
         #endregion
 
         #endregion
@@ -36,6 +37,7 @@ namespace Managers
         private void Init()
         {
             //_data = GetData();
+            _movementController = GetComponent<EnemyMovementController>();
         }
         public TargetData GetData() => Resources.Load<CD_Target>("Data/CD_Player").Data;
 
@@ -68,6 +70,10 @@ namespace Managers
         public Color GetMeshRenderer()
         {
             return meshController.GetMeshRendererColor();
+        }
+        public void OutOfMap()
+        {
+            _movementController.OutOfMap();
         }
 
         private void OnPlay()
