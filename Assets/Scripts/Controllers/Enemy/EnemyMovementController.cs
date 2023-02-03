@@ -36,7 +36,7 @@ public class EnemyMovementController : MonoBehaviour
     {
         do
         {
-            _currentDirection = new Vector3(Random.Range(-1, 2), 0, Random.Range(-1, 2));
+            _currentDirection = new Vector3(Random.Range(-1f, 2f), 0, Random.Range(-1f, 2f));
         } while (_currentDirection == Vector3.zero);
 
         Move(_currentDirection);
