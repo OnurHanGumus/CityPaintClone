@@ -101,6 +101,7 @@ namespace Managers
         }
         private void OnResetLevel()
         {
+            _currentEnemyCount = 0;
             StopAllCoroutines();
         }
     }

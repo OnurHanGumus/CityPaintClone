@@ -25,6 +25,9 @@ public class LevelPanelController : MonoBehaviour
     private int _totalPaintValue = 86400;
     private int _sliderMaksValue;
 
+    private bool _isSuccessful = false;
+    private bool _isStarted = false;
+
     #endregion
     #endregion
     private void Awake()
@@ -40,6 +43,7 @@ public class LevelPanelController : MonoBehaviour
 
     public void OnPlay()
     {
+        _isStarted = true;
         _levelId = LevelSignals.Instance.onGetLevelId();
         Debug.Log(_levelId);
         _sliderMaksValue = _totalPaintValue * _data.EnemyCounts[_levelId] / 100;
@@ -55,11 +59,22 @@ public class LevelPanelController : MonoBehaviour
 
     public void OnChannelCounterIncreased(int currentValue)
     {
+        if (!_isStarted || _isSuccessful)
+        {
+            return;
+        }
         slider.value = currentValue;
+        if (slider.value >= _sliderMaksValue)
+        {
+            CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
+            _isSuccessful = true;
+        }
     }
 
     public void OnRestartLevel()
     {
         scoreText.text = 0.ToString();
+        _isSuccessful = false;
+        _isStarted = false;
     }
 }

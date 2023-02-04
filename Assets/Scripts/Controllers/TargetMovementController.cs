@@ -96,11 +96,6 @@ namespace Controllers
         }
         public void OnRestartLevel()
         {
-            _isNotStarted = true;
-            _rig.velocity = Vector3.zero;
-            //_isNotStarted = true;
-            transform.position = new Vector3(_data.InitializePosX, _data.InitializePosY);
-            transform.eulerAngles = Vector3.zero;
         }
     }
 }
