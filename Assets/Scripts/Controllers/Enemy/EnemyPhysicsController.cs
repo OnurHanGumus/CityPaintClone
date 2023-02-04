@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Managers;
-
+using Signals;
 public class EnemyPhysicsController : MonoBehaviour
 {
     #region Self Variables
@@ -22,6 +22,7 @@ public class EnemyPhysicsController : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            EnemySignals.Instance.onEnemyShooted?.Invoke();
             DrawRay();
             transform.parent.gameObject.SetActive(false);
         }

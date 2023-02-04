@@ -25,7 +25,10 @@ namespace Managers
         #endregion
 
         #region Private Variables
-        private TargetData _data;
+        private LevelData _data;
+        private int _levelId = 0;
+        private int _maksEnemyCount = 5;
+        private int _currentEnemyCount = 0;
         #endregion
 
         #endregion
@@ -37,9 +40,9 @@ namespace Managers
 
         private void Init()
         {
-            //_data = GetData();
+            _data = GetData();
         }
-        public TargetData GetData() => Resources.Load<CD_Target>("Data/CD_Player").Data;
+        public LevelData GetData() => Resources.Load<CD_Level>("Data/CD_Level").Data;
 
         #region Event Subscription
 
@@ -52,12 +55,16 @@ namespace Managers
         {
             CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onRestartLevel += OnResetLevel;
+
+            EnemySignals.Instance.onEnemyShooted += OnEnemyShooted;
         }
 
         private void UnsubscribeEvents()
         {
             CoreGameSignals.Instance.onPlay -= OnPlay;
             CoreGameSignals.Instance.onRestartLevel -= OnResetLevel;
+
+            EnemySignals.Instance.onEnemyShooted -= OnEnemyShooted;
         }
 
 
@@ -73,17 +80,25 @@ namespace Managers
             while (true)
             {
                 yield return new WaitForSeconds(1f);
-                Vector2 rand = Random.insideUnitCircle * 3.5f;
-                Vector3 position = new Vector3(rand.x, -2.9f, rand.y);
-                Vector3 mapOffset = new Vector3(0, 0, 2.63f);
-                PoolSignals.Instance.onGetObjectOnPosition?.Invoke(PoolEnums.Enemy, position + mapOffset);
-
+                if (_currentEnemyCount < _maksEnemyCount)
+                {
+                    Vector2 rand = Random.insideUnitCircle * 3.5f;
+                    Vector3 position = new Vector3(rand.x, -2.9f, rand.y);
+                    Vector3 mapOffset = new Vector3(0, 0, 2.63f);
+                    PoolSignals.Instance.onGetObjectOnPosition?.Invoke(PoolEnums.Enemy, position + mapOffset);
+                    ++_currentEnemyCount;
+                }
             }
-
         }
         private void OnPlay()
         {
+            _levelId = LevelSignals.Instance.onGetLevelId();
             StartCoroutine(Spawn());
+        }
+
+        private void OnEnemyShooted()
+        {
+            --_currentEnemyCount;
         }
         private void OnResetLevel()
         {
