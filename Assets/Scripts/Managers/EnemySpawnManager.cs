@@ -81,7 +81,7 @@ namespace Managers
                 yield return new WaitForSeconds(1f);
                 if (_currentEnemyCount < _maksEnemyCount)
                 {
-                    Vector2 rand = Random.insideUnitCircle * 3.5f;
+                    Vector2 rand = Random.insideUnitCircle * 3f;
                     Vector3 position = new Vector3(rand.x, -2.9f, rand.y);
                     Vector3 mapOffset = new Vector3(0, 0, 2.63f);
                     PoolSignals.Instance.onGetObjectOnPosition?.Invoke(PoolEnums.Enemy, position + mapOffset);
