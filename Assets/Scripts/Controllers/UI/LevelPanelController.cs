@@ -1,14 +1,10 @@
+using Data.UnityObject;
+using Data.ValueObject;
 using Enums;
 using Signals;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using System;
-using Data.UnityObject;
-using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
-using Data.ValueObject;
 
 public class LevelPanelController : MonoBehaviour
 {
@@ -16,7 +12,7 @@ public class LevelPanelController : MonoBehaviour
     #region Public Variables
     #endregion
     #region SerializeField Variables
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private Slider slider;
     #endregion
     #region Private Variables
@@ -24,6 +20,7 @@ public class LevelPanelController : MonoBehaviour
     private int _levelId;
     private int _totalPaintValue = 86400;
     private int _sliderMaksValue;
+    private int _money;
 
     private bool _isSuccessful = false;
     private bool _isStarted = false;
@@ -43,18 +40,23 @@ public class LevelPanelController : MonoBehaviour
 
     public void OnPlay()
     {
+        _money = SaveSignals.Instance.onGetScore(SaveLoadStates.Money, SaveFiles.SaveFile);
+
+        moneyText.text = "$" + _money.ToString();
         _isStarted = true;
         _levelId = LevelSignals.Instance.onGetLevelId();
-        Debug.Log(_levelId);
         _sliderMaksValue = _totalPaintValue * _data.EnemyCounts[_levelId] / 100;
         slider.maxValue = _sliderMaksValue;
     }
-    public void OnScoreUpdateText(ScoreTypeEnums type, int score)
+    public void OnMoneyIncreased(int money)
     {
-        if (type.Equals(ScoreTypeEnums.Score))
-        {
-            scoreText.text = score.ToString();
-        }
+        moneyText.text = "$" + money.ToString();
+        SaveSignals.Instance.onSaveScore?.Invoke(money, SaveLoadStates.Money, SaveFiles.SaveFile);
+    }
+    public void OnMoneyDecreased(int money)
+    {
+        moneyText.text = "$" + money.ToString();
+        SaveSignals.Instance.onSaveScore?.Invoke(money, SaveLoadStates.Money, SaveFiles.SaveFile);
     }
 
     public void OnChannelCounterIncreased(int currentValue)
@@ -73,7 +75,6 @@ public class LevelPanelController : MonoBehaviour
 
     public void OnRestartLevel()
     {
-        scoreText.text = 0.ToString();
         _isSuccessful = false;
         _isStarted = false;
     }

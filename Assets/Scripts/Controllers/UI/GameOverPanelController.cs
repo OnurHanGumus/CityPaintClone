@@ -28,7 +28,7 @@ public class GameOverPanelController : MonoBehaviour
 
     private void Init()
     {
-        _highScore = InitializeHighScore();
+        //_highScore = InitializeHighScore();
     }
 
     private void Start()
@@ -41,10 +41,10 @@ public class GameOverPanelController : MonoBehaviour
         UISignals.Instance.onClosePanel?.Invoke(UIPanels.GameOverPanel);
         UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
     }
-    private int InitializeHighScore()
-    {
-        return SaveSignals.Instance.onGetScore(SaveLoadStates.Score, SaveFiles.SaveFile);
-    }
+    //private int InitializeHighScore()
+    //{
+    //    //return SaveSignals.Instance.onGetScore(SaveLoadStates.Score, SaveFiles.SaveFile);
+    //}
     public void ShowThePanel()
     {
         int temp = ScoreSignals.Instance.onGetScore();
@@ -55,7 +55,7 @@ public class GameOverPanelController : MonoBehaviour
             failPanel.SetActive(false);
             scoreTxt.text = "High Score: " + temp;
             _highScore = temp;
-            SaveSignals.Instance.onSaveScore?.Invoke(temp,SaveLoadStates.Score,SaveFiles.SaveFile);
+            //SaveSignals.Instance.onSaveScore?.Invoke(temp,SaveLoadStates.Score,SaveFiles.SaveFile);
         }
         else
         {

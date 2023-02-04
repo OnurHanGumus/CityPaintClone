@@ -5,7 +5,7 @@ namespace Enums
     [Serializable]
     public enum SaveLoadStates
     {
-        Score,
+        Money,
         //Options
         SoundState,
         Level,

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Managers;
 using Signals;
+using Enums;
 public class EnemyPhysicsController : MonoBehaviour
 {
     #region Self Variables
@@ -23,6 +24,7 @@ public class EnemyPhysicsController : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             EnemySignals.Instance.onEnemyShooted?.Invoke();
+            ScoreSignals.Instance.onScoreIncrease?.Invoke(ScoreTypeEnums.Money, 1);
             DrawRay();
             transform.parent.gameObject.SetActive(false);
         }
