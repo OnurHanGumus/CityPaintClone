@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Commands;
 using Controllers;
@@ -8,11 +7,13 @@ using Data.ValueObject;
 using Enums;
 using Signals;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using PaintIn3D;
+
+
 
 namespace Managers
 {
-    public class EnemySpawnManager : MonoBehaviour
+    public class MapManager : MonoBehaviour
     {
         #region Self Variables
 
@@ -21,14 +22,12 @@ namespace Managers
         #endregion
 
         #region Serialized Variables
+        [SerializeField] private P3dChannelCounter channelCounter;
 
         #endregion
 
         #region Private Variables
-        private LevelData _data;
-        private int _levelId = 0;
-        private int _maksEnemyCount = 5;
-        private int _currentEnemyCount = 0;
+        
         #endregion
 
         #endregion
@@ -40,9 +39,9 @@ namespace Managers
 
         private void Init()
         {
-            _data = GetData();
+            
         }
-        public LevelData GetData() => Resources.Load<CD_Level>("Data/CD_Level").Data;
+        public TargetData GetData() => Resources.Load<CD_Target>("Data/CD_Player").Data;
 
         #region Event Subscription
 
@@ -55,15 +54,19 @@ namespace Managers
         {
             CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onRestartLevel += OnResetLevel;
-            EnemySignals.Instance.onEnemyShooted += OnEnemyShooted;
+
+
+            channelCounter.OnUpdated += OnSliderValueUpdated;
+
         }
 
         private void UnsubscribeEvents()
         {
             CoreGameSignals.Instance.onPlay -= OnPlay;
             CoreGameSignals.Instance.onRestartLevel -= OnResetLevel;
-            EnemySignals.Instance.onEnemyShooted -= OnEnemyShooted;
 
+
+            channelCounter.OnUpdated -= OnSliderValueUpdated;
         }
 
 
@@ -73,35 +76,26 @@ namespace Managers
         }
 
         #endregion
-
-        private IEnumerator Spawn()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(1f);
-                if (_currentEnemyCount < _maksEnemyCount)
-                {
-                    Vector2 rand = Random.insideUnitCircle * 3.5f;
-                    Vector3 position = new Vector3(rand.x, -2.9f, rand.y);
-                    Vector3 mapOffset = new Vector3(0, 0, 2.63f);
-                    PoolSignals.Instance.onGetObjectOnPosition?.Invoke(PoolEnums.Enemy, position + mapOffset);
-                    ++_currentEnemyCount;
-                }
-            }
-        }
         private void OnPlay()
         {
-            _levelId = LevelSignals.Instance.onGetLevelId();
-            StartCoroutine(Spawn());
         }
 
         private void OnEnemyShooted()
         {
-            --_currentEnemyCount;
+            //EnemySignals.Instance.onChannelColorIncreased?.Invoke(channelCounter.CountA);
+        }
+        private void OnBulletHitGround()
+        {
+            //EnemySignals.Instance.onChannelColorIncreased?.Invoke(channelCounter.CountA);
+        }
+
+        private void OnSliderValueUpdated()
+        {
+            UISignals.Instance.onChannelColorIncreased?.Invoke(channelCounter.CountA);
         }
         private void OnResetLevel()
         {
-            StopAllCoroutines();
+
         }
     }
 }

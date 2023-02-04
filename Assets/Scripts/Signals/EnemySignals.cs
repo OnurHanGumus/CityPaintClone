@@ -9,6 +9,5 @@ namespace Signals
     public class EnemySignals : MonoSingleton<EnemySignals>
     {
         public UnityAction onEnemyShooted = delegate { };
-
     }
 }

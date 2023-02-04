@@ -13,5 +13,7 @@ namespace Signals
         public UnityAction<bool> onCloseSuccessfulPanel;
 
         public UnityAction<ScoreTypeEnums, int> onSetChangedText;
+        public UnityAction<int> onChannelColorIncreased = delegate { };
+
     }
 }
