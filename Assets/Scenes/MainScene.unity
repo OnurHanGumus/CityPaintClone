@@ -5901,7 +5901,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589092162}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -8420,7 +8420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 335537678271273353, guid: 244d9efe86c43f04caf8bc60a8375958, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 335537678271273353, guid: 244d9efe86c43f04caf8bc60a8375958, type: 3}
       propertyPath: m_LocalRotation.w

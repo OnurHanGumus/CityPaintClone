@@ -59,12 +59,12 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-            SaveSignals.Instance.onInitializePlayerUpgrades += OnGetItemLevels;
+            SaveSignals.Instance.onInitializePlayerUpgrades += OnGetStoreLevels;
         }
 
         private void UnsubscribeEvents()
         {
-            SaveSignals.Instance.onInitializePlayerUpgrades -= OnGetItemLevels;
+            SaveSignals.Instance.onInitializePlayerUpgrades -= OnGetStoreLevels;
 
         }
 
@@ -92,7 +92,7 @@ namespace Managers
             }
         }
 
-        private void OnGetItemLevels(List<int> levels)
+        private void OnGetStoreLevels(List<int> levels)
         {
             if (levels.Count.Equals(0))
             {

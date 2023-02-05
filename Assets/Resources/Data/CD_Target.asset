@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CD_Target
   m_EditorClassIdentifier: 
   Data:
-    Speed: 2
+    Speed: 4
     InitializePosX: 0
     InitializePosY: 0
-    MaksHorizontalPoint: 0.82
-    MaksVerticalPoint: 5.82
-    MinVerticalPoint: 3.8
+    MaksHorizontalPoint: 3.4
+    MaksVerticalPoint: 4
+    MinVerticalPoint: -4
