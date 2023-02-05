@@ -62,7 +62,7 @@ namespace Managers
         {
             ScoreSignals.Instance.onScoreIncrease += OnScoreIncrease;
             ScoreSignals.Instance.onScoreDecrease += OnScoreDecrease;
-            ScoreSignals.Instance.onGetScore += OnGetScore;
+            ScoreSignals.Instance.onGetMoney += OnGetMoney;
             CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
         }
@@ -71,7 +71,7 @@ namespace Managers
         {
             ScoreSignals.Instance.onScoreIncrease -= OnScoreIncrease;
             ScoreSignals.Instance.onScoreDecrease -= OnScoreDecrease;
-            ScoreSignals.Instance.onGetScore -= OnGetScore;
+            ScoreSignals.Instance.onGetMoney -= OnGetMoney;
             CoreGameSignals.Instance.onPlay -= OnPlay;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
         }
@@ -95,11 +95,12 @@ namespace Managers
 
         private void OnScoreDecrease(ScoreTypeEnums type, int amount)
         {
-
+            Money -= amount;
+            UISignals.Instance.onMoneyDecreased?.Invoke(Money);
         }
 
 
-        private int OnGetScore()
+        private int OnGetMoney()
         {
             return Money;
         }
