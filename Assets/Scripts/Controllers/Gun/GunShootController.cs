@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Signals;
+using Data.ValueObject;
+using Data.UnityObject;
 
 public class GunShootController : MonoBehaviour
 {
@@ -18,12 +20,22 @@ public class GunShootController : MonoBehaviour
     #region Private Variables
     private int _bulletCount = 9;
     private int _maksBulletCount = 9;
+    private float _fireRateValue = 1f;
+    private StoreData _storeData;
+    private int _bulletCountLevel, _fireRateLevel;
+
     #endregion
 
     #endregion
+    private StoreData GetData() => Resources.Load<CD_Store>("Data/CD_Store").Data;
 
     private void Awake()
     {
+        Init();
+    }
+    private void Init()
+    {
+        _storeData = GetData();
     }
     private void Start()
     {
@@ -44,7 +56,7 @@ public class GunShootController : MonoBehaviour
             Fire();
             --_bulletCount;
             GunSignals.Instance.onFired?.Invoke(_bulletCount);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(_fireRateValue);
         }
 
     }
@@ -67,7 +79,25 @@ public class GunShootController : MonoBehaviour
         StartCoroutine(Shoot());
 
     }
-    
+    public void OnGetItemLevels(List<int> levels)
+    {
+        if (levels.Count.Equals(0))
+        {
+            levels = new List<int>() { 0, 0, 0, 0 };
+        }
+
+        _fireRateLevel = levels[2] + 1;
+        _bulletCountLevel = levels[3] + 1;
+
+        ValueUpdateAccordingToSave();
+    }
+    private void ValueUpdateAccordingToSave()
+    {
+        _maksBulletCount = _bulletCountLevel * _storeData.AmmoCapacityIncreaseValue;
+        _fireRateValue = 1 - (_fireRateLevel * _storeData.FireRateDecreaseValue);
+
+        _bulletCount = _maksBulletCount;
+    }
 
     public void OnRestartLevel()
     {

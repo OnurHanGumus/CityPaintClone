@@ -77,6 +77,7 @@ namespace Managers
         private void OnSaveList(List<int> newList, SaveLoadStates saveType, SaveFiles saveFiles)
         {
             _saveGameCommand.OnSaveList(saveType, newList, saveFiles.ToString());
+            SendData();
         }
         private List<int> OnGetList(SaveLoadStates saveType, SaveFiles saveFiles)
         {

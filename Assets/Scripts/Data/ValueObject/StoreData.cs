@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Data.ValueObject
 {
     [Serializable]
-    public class SaveData
+    public class StoreData
     {
         public int IncomeIncreaseValue = 1;
         public int EnemyCountIncreaseValue = 1;
