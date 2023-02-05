@@ -55,6 +55,8 @@ namespace Managers
             CoreGameSignals.Instance.onRestartLevel += levelPanelController.OnRestartLevel;
             ScoreSignals.Instance.onHighScoreChanged += highScorePanelController.OnUpdateText;
             UISignals.Instance.onChannelColorIncreased += levelPanelController.OnChannelCounterIncreased;
+            GunSignals.Instance.onFired += levelPanelController.OnFired;
+            GunSignals.Instance.onReload += levelPanelController.OnReload;
         }
 
         private void UnsubscribeEvents()
@@ -70,6 +72,8 @@ namespace Managers
             CoreGameSignals.Instance.onRestartLevel -= levelPanelController.OnRestartLevel;
             ScoreSignals.Instance.onHighScoreChanged -= highScorePanelController.OnUpdateText;
             UISignals.Instance.onChannelColorIncreased -= levelPanelController.OnChannelCounterIncreased;
+            GunSignals.Instance.onFired -= levelPanelController.OnFired;
+            GunSignals.Instance.onReload -= levelPanelController.OnReload;
         }
 
         private void OnDisable()

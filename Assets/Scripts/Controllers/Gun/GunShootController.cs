@@ -16,7 +16,8 @@ public class GunShootController : MonoBehaviour
     #endregion
 
     #region Private Variables
-
+    private int _bulletCount = 9;
+    private int _maksBulletCount = 9;
     #endregion
 
     #endregion
@@ -32,14 +33,35 @@ public class GunShootController : MonoBehaviour
     {
         while (true)
         {
-            GameObject bullet = PoolSignals.Instance.onGetObject?.Invoke(Enums.PoolEnums.Bullet);
-            bullet.transform.position = transform.position;
-            bullet.transform.eulerAngles = transform.eulerAngles;
-            bullet.SetActive(true);
+            if (_bulletCount <= 0)
+            {
+                yield return new WaitForSeconds(2f);
+                GunSignals.Instance.onReload?.Invoke(_maksBulletCount);
+
+                Reload();
+
+            }
+            Fire();
+            --_bulletCount;
+            GunSignals.Instance.onFired?.Invoke(_bulletCount);
             yield return new WaitForSeconds(1f);
         }
 
     }
+
+    private void Fire()
+    {
+        GameObject bullet = PoolSignals.Instance.onGetObject?.Invoke(Enums.PoolEnums.Bullet);
+        bullet.transform.position = transform.position;
+        bullet.transform.eulerAngles = transform.eulerAngles;
+        bullet.SetActive(true);
+    }
+
+    private void Reload()
+    {
+        _bulletCount = _maksBulletCount;
+    }
+
     public void OnPlay()
     {
         StartCoroutine(Shoot());

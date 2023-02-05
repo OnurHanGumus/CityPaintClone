@@ -5861,6 +5861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1178086279}
+  bulletText: {fileID: 1203897344}
   slider: {fileID: 368260099}
 --- !u!1 &1657702727
 GameObject:

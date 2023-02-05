@@ -12,7 +12,7 @@ public class LevelPanelController : MonoBehaviour
     #region Public Variables
     #endregion
     #region SerializeField Variables
-    [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private TextMeshProUGUI moneyText, bulletText;
     [SerializeField] private Slider slider;
     #endregion
     #region Private Variables
@@ -71,6 +71,16 @@ public class LevelPanelController : MonoBehaviour
             CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
             _isSuccessful = true;
         }
+    }
+
+    public void OnFired(int bulletCount)
+    {
+        bulletText.text = bulletCount.ToString();
+    }
+
+    public void OnReload(int maksBulletCount)
+    {
+        bulletText.text = maksBulletCount.ToString();
     }
 
     public void OnRestartLevel()
