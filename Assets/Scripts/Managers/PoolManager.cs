@@ -11,14 +11,15 @@ public class PoolManager : MonoBehaviour
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private GameObject particlePrefab;
+    [SerializeField] private GameObject particlePrefabR, particlePrefabG, particlePrefabB, particlePrefabP, particlePrefabY;
 
     [SerializeField] private Dictionary<PoolEnums, List<GameObject>> poolDictionary;
+    [SerializeField] private Dictionary<PoolEnums, List<GameObject>> particleDirectory;
 
 
     [SerializeField] private int amountBullets = 50;
     [SerializeField] private int amountEnemies = 8;
-    [SerializeField] private int amountParticle = 5;
+    [SerializeField] private int amountParticle = 3;
 
 
 
@@ -37,7 +38,11 @@ public class PoolManager : MonoBehaviour
         poolDictionary = new Dictionary<PoolEnums, List<GameObject>>();
         InitializePool(PoolEnums.Bullet, bulletPrefab, amountEnemies);
         InitializePool(PoolEnums.Enemy, enemyPrefab, amountBullets);
-        //InitializePool(PoolEnums.Particle, particlePrefab, amountParticle);
+        InitializePool(PoolEnums.ParticleR, particlePrefabR, amountParticle);
+        InitializePool(PoolEnums.ParticleG, particlePrefabG, amountParticle);
+        InitializePool(PoolEnums.ParticleB, particlePrefabB, amountParticle);
+        InitializePool(PoolEnums.ParticleP, particlePrefabP, amountParticle);
+        InitializePool(PoolEnums.ParticleY, particlePrefabY, amountParticle);
     }
 
 
@@ -125,7 +130,11 @@ public class PoolManager : MonoBehaviour
         //reset
         ResetPool(PoolEnums.Bullet);
         ResetPool(PoolEnums.Enemy);
-        //ResetPool(PoolEnums.Particle);
+        ResetPool(PoolEnums.ParticleR);
+        ResetPool(PoolEnums.ParticleG);
+        ResetPool(PoolEnums.ParticleB);
+        ResetPool(PoolEnums.ParticleP);
+        ResetPool(PoolEnums.ParticleY);
     }
 
     private void ResetPool(PoolEnums type)

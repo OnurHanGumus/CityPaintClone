@@ -15,7 +15,7 @@ namespace Managers
         #region Self Variables
 
         #region Public Variables
-
+        public int ColorIndeks;
         #endregion
 
         #region Serialized Variables

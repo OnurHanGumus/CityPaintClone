@@ -4,13 +4,14 @@ using PaintIn3D;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Managers;
 
 public class EnemyMeshController: MonoBehaviour
 {
     #region Self Variables
 
     #region Serialized Variables
-
+    [SerializeField] private EnemyManager manager;
     #endregion
 
     #region Private Variables
@@ -33,6 +34,7 @@ public class EnemyMeshController: MonoBehaviour
     private void OnEnable()
     {
         int rand = Random.Range(0, _colorData.Colors.Count);
+        manager.ColorIndeks = rand;
         _renderer.material.color = _colorData.Colors[rand];
     }
     public Color GetMeshRendererColor()

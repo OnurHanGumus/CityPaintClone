@@ -26,6 +26,7 @@ public class EnemyPhysicsController : MonoBehaviour
             EnemySignals.Instance.onEnemyShooted?.Invoke();
             DrawRay();
             transform.parent.gameObject.SetActive(false);
+            PoolSignals.Instance.onGetObjectOnPosition?.Invoke((PoolEnums)manager.ColorIndeks, transform.position);
         }
     }
     private void OnTriggerExit(Collider other)

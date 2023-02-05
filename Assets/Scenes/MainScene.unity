@@ -484,7 +484,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!114 &61282372
 MonoBehaviour:
@@ -680,7 +680,7 @@ Transform:
   - {fileID: 1292035195}
   - {fileID: 1541291336}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &97251330
 MonoBehaviour:
@@ -3273,7 +3273,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5195590570981678518, guid: 46ca235edab5adf4a9082b6a033d6858, type: 3}
   enemyPrefab: {fileID: 7921213554809529650, guid: cce837b44ae2ce643852b9c83842bf94, type: 3}
-  particlePrefab: {fileID: 0}
+  particlePrefabR: {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+  particlePrefabG: {fileID: 135106, guid: f563a43ef6da8ce43b59040b834b597d, type: 3}
+  particlePrefabB: {fileID: 1346672427745970, guid: cdc64e98df4cda941820127aa8b9eb37, type: 3}
+  particlePrefabP: {fileID: 113062, guid: 716624144f1dd4943be3bd112c114ebf, type: 3}
+  particlePrefabY: {fileID: 113062, guid: ce90a5909cc1f7f49865904e3c751f81, type: 3}
   amountBullets: 50
   amountEnemies: 8
   amountParticle: 5
@@ -3939,7 +3943,7 @@ Transform:
   - {fileID: 657051360}
   - {fileID: 1264924703}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1005947097
 GameObject:
@@ -5897,7 +5901,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589092162}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -6791,7 +6795,7 @@ Transform:
   - {fileID: 192889014}
   - {fileID: 1141310212}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1949843586
 GameObject:
@@ -8400,7 +8404,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 335537678271273352, guid: 244d9efe86c43f04caf8bc60a8375958, type: 3}
       propertyPath: m_Name
-      value: Target
+      value: TargetSprite
       objectReference: {fileID: 0}
     - target: {fileID: 335537678271273353, guid: 244d9efe86c43f04caf8bc60a8375958, type: 3}
       propertyPath: m_RootOrder
