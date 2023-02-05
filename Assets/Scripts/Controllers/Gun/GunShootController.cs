@@ -79,7 +79,7 @@ public class GunShootController : MonoBehaviour
         StartCoroutine(Shoot());
 
     }
-    public void OnGetItemLevels(List<int> levels)
+    public void OnGetStoreLevels(List<int> levels)
     {
         if (levels.Count.Equals(0))
         {

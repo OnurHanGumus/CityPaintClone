@@ -52,7 +52,7 @@ namespace Managers
             CoreGameSignals.Instance.onPlay += shootController.OnPlay;
             CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
             CoreGameSignals.Instance.onRestartLevel += shootController.OnRestartLevel;
-            SaveSignals.Instance.onInitializePlayerUpgrades += shootController.OnGetItemLevels;
+            SaveSignals.Instance.onInitializePlayerUpgrades += shootController.OnGetStoreLevels;
         }
 
         private void UnsubscribeEvents()
@@ -61,7 +61,7 @@ namespace Managers
             CoreGameSignals.Instance.onPlay -= shootController.OnPlay;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
             CoreGameSignals.Instance.onRestartLevel -= shootController.OnRestartLevel;
-            SaveSignals.Instance.onInitializePlayerUpgrades -= shootController.OnGetItemLevels;
+            SaveSignals.Instance.onInitializePlayerUpgrades -= shootController.OnGetStoreLevels;
         }
 
 
