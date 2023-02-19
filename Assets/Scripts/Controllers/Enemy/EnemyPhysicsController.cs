@@ -27,6 +27,8 @@ public class EnemyPhysicsController : MonoBehaviour
             DrawRay();
             transform.parent.gameObject.SetActive(false);
             PoolSignals.Instance.onGetObjectOnPosition?.Invoke((PoolEnums)manager.ColorIndeks, transform.position);
+            AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Hit);
+
         }
     }
     private void OnTriggerExit(Collider other)

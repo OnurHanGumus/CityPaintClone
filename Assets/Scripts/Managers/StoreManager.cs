@@ -89,6 +89,8 @@ namespace Managers
                 itemLevels[id] = itemLevels[id] + 1;
                 SaveSignals.Instance.onUpgradePlayer?.Invoke(itemLevels, SaveLoadStates.PlayerImprovements, SaveFiles.SaveFile);
                 UpdateTexts();
+                AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Click);
+
             }
         }
 

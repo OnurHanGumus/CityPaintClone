@@ -5,12 +5,10 @@ namespace Enums
     [Serializable]
     public enum AudioSoundEnums
     {
-        BallInTheCup,
-        ColorlessBallInTheCup,
-        Win,
-        Lose,
         Click,
-        PullThePin,
-        ColorChange,
+        Win,
+        Fire,
+        Hit,
+        Reload,
     }
 }

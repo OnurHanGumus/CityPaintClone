@@ -5,6 +5,7 @@ using DG.Tweening;
 using Signals;
 using Data.ValueObject;
 using Data.UnityObject;
+using System.Threading.Tasks;
 
 public class GunShootController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class GunShootController : MonoBehaviour
     private float _fireRateValue = 1f;
     private StoreData _storeData;
     private int _bulletCountLevel, _fireRateLevel;
+    private bool _isStarted = false;
 
     #endregion
 
@@ -41,24 +43,47 @@ public class GunShootController : MonoBehaviour
     {
 
     }
-    private IEnumerator Shoot()
+    //private IEnumerator Shoot()
+    //{
+    //    while (true)
+    //    {
+    //        if (_bulletCount <= 0)
+    //        {
+    //            yield return new WaitForSeconds(2f);
+    //            GunSignals.Instance.onReload?.Invoke(_maksBulletCount);
+
+    //            Reload();
+    //            AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Reload);
+
+
+    //        }
+    //        Fire();
+    //        AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Fire);
+    //        --_bulletCount;
+    //        GunSignals.Instance.onFired?.Invoke(_bulletCount);
+    //        yield return new WaitForSeconds(_fireRateValue);
+    //    }
+
+    //}
+
+    private async Task Shoot()
     {
-        while (true)
+        while (_isStarted)
         {
             if (_bulletCount <= 0)
             {
-                yield return new WaitForSeconds(2f);
+                await Task.Delay(2000);
                 GunSignals.Instance.onReload?.Invoke(_maksBulletCount);
 
                 Reload();
-
+                AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Reload);
             }
             Fire();
+            AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Fire);
             --_bulletCount;
             GunSignals.Instance.onFired?.Invoke(_bulletCount);
-            yield return new WaitForSeconds(_fireRateValue);
+            await Task.Delay((int)(_fireRateValue * 1000));
         }
-
     }
 
     private void Fire()
@@ -76,8 +101,8 @@ public class GunShootController : MonoBehaviour
 
     public void OnPlay()
     {
-        StartCoroutine(Shoot());
-
+        _isStarted = true;
+        Shoot();
     }
     public void OnGetStoreLevels(List<int> levels)
     {
@@ -101,6 +126,7 @@ public class GunShootController : MonoBehaviour
 
     public void OnRestartLevel()
     {
+        _isStarted = false;
         StopAllCoroutines();
     }
 }

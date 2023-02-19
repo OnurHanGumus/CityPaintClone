@@ -5059,7 +5059,12 @@ MonoBehaviour:
   - {fileID: 1752941539}
   - {fileID: 1005947099}
   - {fileID: 652787407}
-  sounds: []
+  sounds:
+  - {fileID: 8300000, guid: 0f06dfe3d43178a4092fb27100eddd77, type: 3}
+  - {fileID: 8300000, guid: 568be4dc31f6ffe43b1d2b2b6c46821c, type: 3}
+  - {fileID: 8300000, guid: c1b5d704f1969684ba34b07cc3defdc0, type: 3}
+  - {fileID: 8300000, guid: 5bec8a7465938774393b95a0cd701fb4, type: 3}
+  - {fileID: 8300000, guid: 2ed61b6ccfd998c4cad62c8cff5f0afa, type: 3}
 --- !u!1 &1252852477
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,7 +5906,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589092162}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0

@@ -69,6 +69,8 @@ public class LevelPanelController : MonoBehaviour
         if (slider.value >= _sliderMaksValue)
         {
             CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
+            AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Win);
+
             _isSuccessful = true;
         }
     }
