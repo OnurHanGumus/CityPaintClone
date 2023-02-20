@@ -72,11 +72,14 @@ public class GunShootController : MonoBehaviour
         {
             if (_bulletCount <= 0)
             {
-                await Task.Delay(2000);
+                AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Reload);
+
+                await Task.Delay(1500);
+                AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Reload);
+                await Task.Delay(500);
                 GunSignals.Instance.onReload?.Invoke(_maksBulletCount);
 
                 Reload();
-                AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Reload);
             }
             Fire();
             AudioSignals.Instance.onPlaySound?.Invoke(Enums.AudioSoundEnums.Fire);
