@@ -1,6 +1,8 @@
 # CityPaintClone
 LevelUpAcademy package works 3
+
 Used package: Paint in 3D
+
 Used patterns:
 
 1.  Observer Pattern
